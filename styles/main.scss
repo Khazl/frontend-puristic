@@ -1,0 +1,31 @@
+@import 'config/colors';
+@import 'config/fonts';
+
+@import 'components/buttons';
+@import 'components/tables';
+@import 'components/forms';
+@import 'components/notices';
+
+/* USE BEM: http://getbem.com/naming/ */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: $defaultFontFamily;
+	font-size: $defaultFontSize;
+}
+
+#wrapper {
+	
+}
+
+#header {
+	
+}
+
+#content {
+	
+}
+
+#footer {
+	
+}
