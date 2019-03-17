@@ -25,6 +25,15 @@ Following important bundles are included:
 
 Now you can run `$ gulp` and start developing.
 
+### Commands ###
+`$ gulp` starts the js and css watcher
+
+`$ gulp build` runs the js and css compilation
+
+`$ gulp js` runs the js compilation
+
+`$ gulp css` runs the css compilation
+
 
 ### Other recommended packages ###
 
