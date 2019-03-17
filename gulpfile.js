@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('gulp-babel');
+const browserSync = require('browser-sync').create();
 
 function css() {
 	return gulp.src('styles/main.scss')
@@ -11,6 +12,7 @@ function css() {
             cascade: false
         }))
 		.pipe(gulp.dest('public/css'))
+        .pipe(browserSync.stream());
 }
 
 function js() {
@@ -18,7 +20,15 @@ function js() {
         .pipe(babel({
             presets: ['env']
         }))
-        .pipe(gulp.dest('public/js'))
+        .pipe(gulp.dest('public/js'));
+}
+
+function server() {
+    browserSync.init({
+        server: {
+            baseDir: "./public"
+        }
+    });
 }
 
 function watch() {
@@ -28,6 +38,8 @@ function watch() {
 
 exports.css = css;
 exports.js = js;
+exports.server = server;
+exports.watch = watch;
 
 exports.build = gulp.parallel(
     css,
@@ -39,5 +51,8 @@ exports.default = gulp.series(
         css,
         js
     ),
-    watch
+    gulp.parallel(
+        watch,
+        server
+    )
 );
