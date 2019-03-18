@@ -7,13 +7,17 @@
   "author": "Guido Gasper",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^9.5.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.26.3",
+    "cssnano": "^4.1.10",
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-css-scss": "^0.1.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^3.1.0",
+    "postcss-discard-comments": "^4.0.2",
+    "yargs": "^13.2.2"
   }
 }

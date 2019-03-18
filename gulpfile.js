@@ -1,16 +1,32 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
+const autoprefixer = require('autoprefixer');
 const babel = require('gulp-babel');
+const cssnano = require('cssnano');
+const postcss = require('gulp-postcss');
+const comments = require('postcss-discard-comments');
+const argv = require('yargs').argv;
 const browserSync = require('browser-sync').create();
 
 function css() {
-	return gulp.src('styles/main.scss')
-		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer({
+    let plugins = [
+        autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
-        }))
+        })
+    ];
+
+    if (argv.production) {
+        plugins.push(
+            cssnano,
+            comments({removeAll: true})
+            // here you can add postcss plugins which are important for production.
+        );
+    }
+
+	return gulp.src('styles/main.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(postcss(plugins))
 		.pipe(gulp.dest('public/css'))
         .pipe(browserSync.stream());
 }

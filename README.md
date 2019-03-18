@@ -39,7 +39,6 @@ Now you can run `$ gulp` and start developing.
 
 ### Todo ###
 
-- normalize css
 - js auto reload after compilation
 
 
