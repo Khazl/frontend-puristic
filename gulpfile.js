@@ -11,7 +11,6 @@ const browserSync = require('browser-sync').create();
 function css() {
     let plugins = [
         autoprefixer({
-            browsers: ['last 2 versions'],
             cascade: false
         })
     ];
